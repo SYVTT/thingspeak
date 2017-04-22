@@ -34,13 +34,13 @@ public class DataSender {
             try {
                 channel.update(entry);
             } catch (UnirestException | ThingSpeakException e) {
-//            e.printStackTrace();
+                System.out.println("Channel update exception");
             }
 
             try {
                 Thread.sleep(10*1000);
             } catch (InterruptedException e) {
-//                e.printStackTrace();
+                System.out.println("Thread exception");
             }
         }
 
