@@ -11,8 +11,8 @@ import com.sun.management.OperatingSystemMXBean;
 public class DataSender {
 
     public static void main(String[] args) {
-        String apiWriteKey = "FLX4M627WED2TEAQ";
-        int channelId = 262151;
+        String apiWriteKey = "885LXZRY8M4CF09H";
+        int channelId = 262230;
         Channel channel = new Channel(channelId, apiWriteKey);
 
         Entry entry = new Entry();
