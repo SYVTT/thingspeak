@@ -6,7 +6,7 @@ import com.angryelectron.thingspeak.ThingSpeakException;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.lang.management.ManagementFactory;
-import java.lang.management.OperatingSystemMXBean;
+import com.sun.management.OperatingSystemMXBean;
 
 public class DataSender {
 
@@ -19,10 +19,14 @@ public class DataSender {
 
 
         OperatingSystemMXBean osBean = (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
-        System.out.println(osBean.getSystemLoadAverage());
-
-
-        entry.setField(1, String.valueOf(osBean.getSystemLoadAverage()));
+        System.out.println(osBean.getSystemCpuLoad());
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(osBean.getSystemCpuLoad());
+        entry.setField(1, String.valueOf(osBean.getSystemCpuLoad()));
         try {
             channel.update(entry);
         } catch (UnirestException | ThingSpeakException e) {
